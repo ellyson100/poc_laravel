@@ -24,8 +24,8 @@ Um sistema web desenvolvido em Laravel para gerenciamento de tarefas com autenti
 
 1. Clone o repositório
 ```bash
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
-cd nome-do-repositorio
+git clone https://github.com/luisrigoipnet/app_task_laravel.git
+cd app_task_laravel
 ```
 
 2. Instale as dependências do PHP via Composer
@@ -83,7 +83,7 @@ http://localhost:8000
 ## 📦 Estrutura do Projeto
 
 ```
-laravel_modelo_app/
+app_task_laravel/
 ├── app/
 │   ├── Http/
 │   │   ├── Controllers/
@@ -134,4 +134,8 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ## 📞 Suporte
 
-Para suporte, envie um email para seu-email@exemplo.com ou abra uma issue no repositório.
+Para suporte, abra uma issue no repositório [app_task_laravel](https://github.com/luisrigoipnet/app_task_laravel/issues).
+
+## 👤 Autor
+
+- **Luis Rigo** - [GitHub](https://github.com/luisrigoipnet)
