@@ -25,14 +25,16 @@ jobs:
           username: ellyson_cruz
           key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
           script: |
-            cd /opt/teste #caminho ajustado
-            git reset --hard origin/master
-            git pull origin master
-            echo "yes" | composer install --no-interaction --optimize-autoloader --no-dev
-            php artisan optimize:clear
-            php artisan route:clear
-            php artisan config:cache
-            php artisan config:clear
+            ls -lh
+            pwd
+            # cd /opt/teste #caminho ajustado
+            # git reset --hard origin/master
+            # git pull origin master
+            # echo "yes" | composer install --no-interaction --optimize-autoloader --no-dev
+            # php artisan optimize:clear
+            # php artisan route:clear
+            # php artisan config:cache
+            # php artisan config:clear
             
       # - name: Install PHP 8.4
       #   uses: shivammathur/setup-php@v2
