@@ -19,8 +19,10 @@ jobs:
       - name: SSH into VM and deploy
         uses: appleboy/ssh-action@v1
         with:
-          host: ${{ secrets.GCP_VM_IP }}
-          username: ${{ secrets.GCP_VM_USER }}
+          #host: ${{ secrets.GCP_VM_IP }}
+          host: 34.23.251.245
+          #username: ${{ secrets.GCP_VM_USER }}
+          username: ellyson_cruz
           key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
           script: |
             cd /opt/teste #caminho ajustado
