@@ -11,10 +11,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Authenticate with GCP
-        uses: google-github-actions/auth@v1
-        with:
-          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+      # - name: Authenticate with GCP
+      #   uses: google-github-actions/auth@v1
+      #   with:
+      #     credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
       - name: SSH into VM and deploy
         uses: appleboy/ssh-action@v1
@@ -31,21 +31,22 @@ jobs:
             php artisan route:clear
             php artisan config:cache
             php artisan config:clear
-      - name: Install PHP 8.4
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.4' #versão correta
-          extensions: composer, mbstring, xml, bcmath, ctype, fileinfo, json, tokenizer, mysql, pdo, pdo_mysql #Adicionados extensions comumente usados por laravel.
+            
+      # - name: Install PHP 8.4
+      #   uses: shivammathur/setup-php@v2
+      #   with:
+      #     php-version: '8.4' #versão correta
+      #     extensions: composer, mbstring, xml, bcmath, ctype, fileinfo, json, tokenizer, mysql, pdo, pdo_mysql #Adicionados extensions comumente usados por laravel.
 
-      - name: Configure Laravel environment
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.GCP_VM_IP }}
-          username: ${{ secrets.GCP_VM_USER }}
-          key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
-          script: |
-             cd /opt/teste
-             cp .env.example .env #Copia o .env caso não exista.
-             # Você pode adicionar comandos aqui para configurar o .env com variáveis de ambiente.
-             # Por exemplo, se precisar definir o APP_KEY
-             php artisan key:generate
+      # - name: Configure Laravel environment
+      #   uses: appleboy/ssh-action@v1
+      #   with:
+      #     host: ${{ secrets.GCP_VM_IP }}
+      #     username: ${{ secrets.GCP_VM_USER }}
+      #     key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+      #     script: |
+      #        cd /opt/teste
+      #        cp .env.example .env #Copia o .env caso não exista.
+      #        # Você pode adicionar comandos aqui para configurar o .env com variáveis de ambiente.
+      #        # Por exemplo, se precisar definir o APP_KEY
+      #        php artisan key:generate
