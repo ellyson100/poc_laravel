@@ -1,0 +1,38 @@
+name: Terraform Deploy
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  terraform:
+    name: 'Terraform Apply'
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./terraforms
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configura Versão
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: '1.11.3'
+
+      - name: Carregar Credenciais
+        run: |
+          echo "${{ secrets.CREDENCIAIS_GCP }}" > credentials.json
+
+      - name: Iniciar 
+        run: terraform init
+
+      - name: Validar 
+        run: terraform validate
+
+      - name: Aplicar
+        run: terraform apply -auto-approve
