@@ -11,6 +11,9 @@ jobs:
     name: 'Terraform Apply'
     runs-on: ubuntu-latest
 
+    env:
+      GOOGLE_CREDENTIALS: ${{ secrets.CREDENCIAIS_GCP }}
+
     defaults:
       run:
         working-directory: ./terraforms
@@ -23,20 +26,6 @@ jobs:
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: '1.11.3'
-
-      - name: Debug GCP_CREDENTIALS (parcial)
-        run: |
-          echo "Início: ${GCP_CREDENTIALS:0:60}..."
-          echo "Final: ...${GCP_CREDENTIALS: -60}"
-        env:
-          GCP_CREDENTIALS: ${{ secrets.CREDENCIAIS_GCP }}
-
-      - name: Carregar Credenciais
-        run: |
-          printf "%s" "${{ secrets.CREDENCIAIS_GCP }}" > credentials.json
-          ls -lh
-          pwd
-          cat credentials.json
 
       - name: Iniciar 
         run: terraform init
