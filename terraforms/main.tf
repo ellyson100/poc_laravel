@@ -10,7 +10,7 @@ terraform {
 provider "google" {
   project     = "475058725041"
   region      = "us-east1"
-  credentials = file("./lab-msp-cs-labk8s-eb5a1b72f2b2.json")
+  credentials = file("./credentials.json")
 }
 
 resource "google_compute_region_autoscaler" "autoscaler" {
@@ -53,4 +53,6 @@ resource "google_compute_instance_template" "ubuntu" {
   network_interface {
     network = "default"
   }
+
+  metadata_startup_script = file("./startup-script.sh")
 }
