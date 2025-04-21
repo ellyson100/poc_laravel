@@ -10,7 +10,7 @@ terraform {
 provider "google" {
   project     = "475058725041"
   region      = "us-east1"
-  credentials = file("./credentials.json")
+  #credentials = file("./credentials.json")
 }
 
 resource "google_compute_region_autoscaler" "autoscaler" {
