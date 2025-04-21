@@ -24,6 +24,13 @@ jobs:
         with:
           terraform_version: '1.11.3'
 
+      - name: Debug GCP_CREDENTIALS (parcial)
+        run: |
+          echo "Início: ${GCP_CREDENTIALS:0:60}..."
+          echo "Final: ...${GCP_CREDENTIALS: -60}"
+        env:
+          GCP_CREDENTIALS: ${{ secrets.CREDENCIAIS_GCP }}
+
       - name: Carregar Credenciais
         run: |
           printf "%s" "${{ secrets.CREDENCIAIS_GCP }}" > credentials.json
