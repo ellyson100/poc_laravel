@@ -27,8 +27,9 @@ jobs:
       - name: Carregar Credenciais
         run: |
           printf "%s" "${{ secrets.CREDENCIAIS_GCP }}" > credentials.json
-          cat credentials.json
+          ls -lh
           pwd
+          cat credentials.json
 
       - name: Iniciar 
         run: terraform init
