@@ -26,7 +26,7 @@ jobs:
 
       - name: Carregar Credenciais
         run: |
-          printf "%s" "${{ secrets.GCP_CREDENTIALS }}" > credentials.json
+          printf "%s" "${{ secrets.CREDENCIAIS_GCP }}" > credentials.json
           cat credentials.json
           pwd
 
